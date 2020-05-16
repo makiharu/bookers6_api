@@ -59,10 +59,10 @@ group :test do
   # 下の６つのgemを追加する
   gem 'rspec-rails'
   gem "factory_bot_rails"
-  gem 'rspec-parameterized'
+  #gem 'rspec-parameterized'
   gem 'faker' #ランダム値の生成
-  gem 'shoulda-matchers'
-  gem 'rails-controller-testing'
+  #gem 'shoulda-matchers'
+  #gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -74,3 +74,7 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
 gem 'jquery-rails'
+
+gem 'pry-byebug'
+
+gem 'bootstrap-sass', '~> 3.3.6'
