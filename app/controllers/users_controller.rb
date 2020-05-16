@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :baria_user, only: [:update]
+  before_action :baria_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
   def show

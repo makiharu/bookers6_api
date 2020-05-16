@@ -16,15 +16,18 @@
 			<table class="table">
 					<tr>
 						<td>
-							<%= link_to (@onebook.user) do %>
-							<%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
-							<%= @onebook.user.name %>
+							<%= link_to user_path(@user) do %>
+							<%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no-image-mini.jpg") %><br>
+							<%= @user.name %>
 							<% end %>
 						</td>
-						<td><%= link_to @onebook.title %></td>
+						<td><%= link_to @onebook.title, book_path(@onebook) %></td>
 						<td><%= @onebook.body %></td>
+
+						<% if  @onebook.user_id == current_user.id %>
 						<td><%= link_to "Edit",edit_book_path(@onebook), class: "btn-sm btn-success edit_book_#{@book.id}" %></td>
 						<td><%= link_to "Destroy",@onebook, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@book.id}" %></td>
+						<% end %>
 					</tr>
 				</table>
 
