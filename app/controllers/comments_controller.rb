@@ -24,6 +24,12 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
+		@comment = Comment.find(params[:book_id])
+		if @comment.destroy
+			redirect_to books_path, notice: "deleted!!!"
+		else
+			render 'edit'
+		end
 	end
 
 	private
