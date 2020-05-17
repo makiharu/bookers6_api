@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   #before_action :baria_user, only: [:edit, :update]
+
   before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update]
 
@@ -7,6 +8,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new #new bookの新規投稿で必要（保存処理はbookコントローラー側で実施）
+
+
   end
 
   def index

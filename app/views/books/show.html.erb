@@ -28,8 +28,33 @@
 						<td><%= link_to "Edit",edit_book_path(@onebook), class: "btn-sm btn-success edit_book_#{@book.id}" %></td>
 						<td><%= link_to "Destroy",@onebook, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@book.id}" %></td>
 						<% end %>
-						<td>favo</td>
-						<td>コメント数 <%= @onebook.comments.count %></td>
+						<td>
+							<% if @onebook.favorited_by?(current_user) %>
+							<li>
+							  <%= link_to book_favorites_path(@onebook), method: :delete do %>
+							  <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+							  <%= @onebook.favorites.count %> いいね
+							  <% end %>
+							</li>
+							<% else %>
+							<li>
+							  <%= link_to book_favorites_path(@onebook), method: :post do %>
+							  <i class="fa fa-heart-o" aria-hidden="true"></i>
+							  <%= @onebook.favorites.count %> いいね
+							  <% end %>
+							</li>
+							<% end %>
+						</td>
+						<td>
+							<% if @onebook.user_id == current_user.id %>
+							  <%= link_to edit_book_comments_path(@onebook) do %>
+							  コメント数 <%= @onebook.comments.count %>
+							  <% end %>
+							<% else %>
+							  コメント数 <%= @onebook.comments.count %>
+							<% end %>
+						</td>
+
 					</tr>
 			</table>
 
@@ -45,6 +70,9 @@
 					</div>
 				<% end %>
 			</div>
+
+	
+
 
 		</div>
 	</div>
