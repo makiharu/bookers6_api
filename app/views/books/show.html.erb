@@ -28,8 +28,23 @@
 						<td><%= link_to "Edit",edit_book_path(@onebook), class: "btn-sm btn-success edit_book_#{@book.id}" %></td>
 						<td><%= link_to "Destroy",@onebook, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@book.id}" %></td>
 						<% end %>
+						<td>favo</td>
+						<td>コメント数 <%= @onebook.comments.count %></td>
 					</tr>
-				</table>
+			</table>
+
+			<div class="comment-form">
+				<%= form_for [@onebook, @comment] do |f| %>
+					<div class="row">
+						<div class="col-xs-12">
+							<%= f.text_area :comment, rows: '5', class: "form-control", placeholder: "コメント入力どうぞ" %>
+						</div>
+					</div>
+					<div class="actions">
+						<%= f.submit '送信'%>
+					</div>
+				<% end %>
+			</div>
 
 		</div>
 	</div>
