@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'home#top'
   get 'home/about' => "home#about"
 
@@ -6,10 +7,11 @@ Rails.application.routes.draw do
 
   resources :users,only: [:show,:index,:edit,:update]
   resources :books do
-    
-    resource :comments, only: [:create, :edit, :update, :destroy]
+    resources :book_comments, only: [:create]
     resource :favorites, only: [:create, :destroy]
   end
-  
 
+  resources :book_comments, only: [:destroy]　#createのようにネストさせる必要はなし
+  
+ #resource :book_comments, only: [:create, :destroy]
 end

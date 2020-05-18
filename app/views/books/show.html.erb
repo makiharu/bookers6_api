@@ -46,23 +46,26 @@
 							<% end %>
 						</td>
 						<td>
-							<% if @onebook.user_id == current_user.id %>
-							  <%= link_to edit_book_comments_path(@onebook) do %>
-							  コメント数 <%= @onebook.comments.count %>
-							  <% end %>
-							<% else %>
-							  コメント数 <%= @onebook.comments.count %>
-							<% end %>
+							  コメント数: <%= @onebook.book_comments.count %>
 						</td>
 
 					</tr>
 			</table>
 
 			<div class="comment-form">
-				<%= form_for [@onebook, @comment] do |f| %>
+				<%= form_for [@onebook, @book_comment] do |f| %>
+					  <% if @onebook.errors.any? %>
+				  <h3><%= @onebook.errors.count %>error occurrence</h3>
+				  <ul>
+				  	  <% @onebook.errors.full_messages.each do |msg| %>
+				  	  <li><%= msg %></li>
+				  	  <% end %>
+				  </ul>
+				  <% end %>
 					<div class="row">
 						<div class="col-xs-12">
-							<%= f.text_area :comment, rows: '5', class: "form-control", placeholder: "コメント入力どうぞ" %>
+							<%= f.text_area :content, rows: '5', class: "form-control", placeholder: "コメント入力どうぞ" %>
+						
 						</div>
 					</div>
 					<div class="actions">
@@ -71,6 +74,26 @@
 				<% end %>
 			</div>
 
+			<div class="book_comments">
+				<table class="table">
+					<tr>
+						<th>No.</th>
+						<th>内容</th>
+						<th class="colspan="3"></th>
+					</tr>
+					<tbody>
+						<tr>
+						<% @onebook.book_comments.each do |comment| %>
+						<td><%= comment.id %></td>
+						<td><%= comment.content %></td>
+						<% if @onebook.user_id == current_user.id %>
+						<td><%= link_to 'Destroy',book_comment_path(comment), method: :delete %></td>
+							<% end %>
+						</tr>
+						<% end %>
+					</tbody>
+
+			</div>
 	
 
 

@@ -6,11 +6,15 @@ class BooksController < ApplicationController
     @book = Book.new
   	@onebook = Book.find(params[:id])
     @user = User.find(@onebook.user_id)
-    @comment = Comment.new
+    @book_comment = BookComment.new
   end
 
+    #@book_comments = @onebook.book_comments #追加
+    #@book_comment = @onebook.book_comments.build
+  
+
   def index
-  	@books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
+  	@books = Book.all
     @book = Book.new
   end
 
