@@ -6,12 +6,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users,only: [:show,:index,:edit,:update]
-  resources :books do
-    resources :book_comments, only: [:create]
+  
+  resources :books, only: [:index, :show, :edit, :create, :update, :destroy] do
+    resource :book_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
 
-  resources :book_comments, only: [:destroy]　#createのようにネストさせる必要はなし
-  
+  post 'books/:id', to:  'books#show' #サンプル
+
+  #createのようにネストさせる必要はなし
  #resource :book_comments, only: [:create, :destroy]
 end
