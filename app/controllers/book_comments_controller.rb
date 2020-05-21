@@ -8,22 +8,17 @@ class BookCommentsController < ApplicationController
     @book_comment = @book.book_comments.new(book_comment_params)
     @book_comment.user_id = current_user.id
     @book_comments = @book.book_comments #@をつけ忘れて、エラーになってた！右辺つけ忘れないように
+    @book_comment.save
+    #@book_comments = BookComment.where(id: @book)
 
   #redirectを消去することで、jsファイルを読み込んでくれるようになる
-
-
   end
 
   def destroy
     @book_comment = BookComment.find(params[:id])
-   # if @book_comment.user != current_user
-    #  redirect_to request.referer
-    #end
-    if @book_comment.destroy
-      render :index
-    end
-     # redirect_back(fallback_location:root_path)
-    
+
+    @book_comment.destroy
+  
   end
 
   private
