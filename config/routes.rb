@@ -9,14 +9,14 @@ Rails.application.routes.draw do
   
   resources :books, only: [:index, :show, :edit, :create, :update, :destroy] do
     resource :book_comments, only: [:create]
-    resource :favorites, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
   end
 
- # post "posts/:book_id/destroy" => "posts#destroy"
-
   resources :book_comments, only: [:destroy]
+  
+
+
+  #createのようにネストさせる必要はなし createとは別にする方が楽でよい。
  
 
-  #createのようにネストさせる必要はなし
- #resource :book_comments, only: [:create, :destroy]
 end
