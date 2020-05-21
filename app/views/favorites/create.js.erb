@@ -1,0 +1,13 @@
+//-# if文の中身はモデルにて定義済のインスタンスメソッド
+//-# 既にcurrent_userがuserをlikeしているか判定している
+//- if current_user.like?(user)
+//- #すでにいいねしている場合は"いいね済"の表記に変わり、無効なリンクになる
+//  =link_to "いいね済", "#", class:"button_like button_orange"
+//- else
+//- # そうでない場合はいいね！ボタンが表示される
+ // =link_to "いいね！", user_likes_path(user_id: user.id), method: :post, remote: true, class:"button_like button_pink"
+
+
+
+// #likes_buttons_<%= @book.id %>この部分のHTMLだけ、renderで部分的に更新するという処理です
+$('#likes_buttons_<%= @book.id %>').html("<%= j(render partial: 'favorites/like', locals: {book: @book}) %>");
