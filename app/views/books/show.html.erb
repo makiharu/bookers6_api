@@ -19,8 +19,9 @@
         <td><%= link_to @book.title, @book %></td>
         <td><%= @book.body %></td>
         <!-- いいね機能 -->
-        <td id="likes_buttons_<%= @book.id %>"> <!--idを付与するのがポイント-->
+   <!--     <td id="likes_buttons_<%= @book.id %>"> --idを付与するのがポイント-->
 
+        <td id="likes_buttons_<%= @book.id %>">
           <%= render 'favorites/like', book: @book %> <!--localsはなくてもいける-->
         </td>
          <!--いいね機能　ここまで--> 
@@ -38,10 +39,10 @@
 
     <!--table id="comments"--><!--コメント一覧-->
 
-    <table id="table"> 
+    <table id="table">
       <h4>コメント</h4>
 
-            <%= render 'book_comments/index', book_comments: @book_comments %>
+        <%= render 'book_comments/index', book_comments: @book_comments %>
            
    	</table>
    

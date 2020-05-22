@@ -2,3 +2,6 @@
 
 
 $('#likes_buttons_<%= @book.id %>').html("<%= j(render partial: 'favorites/like', locals: {book: @book}) %>");
+
+
+//$('#likes_buttons_<%= @book.id %>').remove();

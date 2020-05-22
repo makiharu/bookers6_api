@@ -32,10 +32,11 @@
         <td><%= link_to book.title,book, class: "book_#{book.id}" %></td>
         <td><%= book.body %></td>
         <!-- いいね機能 -->
-        <td id="likes_buttons_<%= book.id %>">
+     <td id="likes_buttons_<%= book.id %>">
 
-           <%= render 'favorites/like', book: @book %>
-
+      
+          <%= render 'favorites/like', book: book %>
+ 
         </td>
         <td>コメント数：<%= book.book_comments.count %></td>
       </tr>

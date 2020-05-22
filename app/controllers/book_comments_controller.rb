@@ -9,7 +9,7 @@ class BookCommentsController < ApplicationController
     @book_comment.user_id = current_user.id
     @book_comments = @book.book_comments #@をつけ忘れて、エラーになってた！右辺つけ忘れないように
     @book_comment.save
-    #@book_comments = BookComment.where(id: @book)
+    #@book_comments = BookComment.where(id: @book) #idの中身を考えるのが少し大変なので、上二行の書き方にしておく方がわかりやすい
 
   #redirectを消去することで、jsファイルを読み込んでくれるようになる
   end
