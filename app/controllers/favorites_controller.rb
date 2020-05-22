@@ -10,7 +10,7 @@ class FavoritesController < ApplicationController
 
 	def destroy
 		@book = Book.find(params[:book_id])
-		favorite = @book.favorites.find_by(book_id:params[:book_id],user_id:current_user.id)#追加してみた
+		favorite = @book.favorites.find_by(book_id:params[:book_id],user_id:current_user.id)
 		favorite.destroy
 		#redirect_back(fallback_location: root_path) Ajaxのときはいらない
 	end
